@@ -1,6 +1,3 @@
-let w = 0, h = 0;
-const image = new Image();
-
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 const months = ["January", "February", "March", "April", "May", "June", "July",
@@ -28,8 +25,8 @@ function pageLoad() {
 
 function render() {
 
-    w = window.innerWidth;
-    h = window.innerHeight;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
     const canvas = document.getElementById('studyDirectoryWeekCanvas');
     canvas.width = w;
     canvas.height = h;
@@ -43,17 +40,17 @@ function render() {
     context.textBaseline = "top";
     context.textAlign = "end";
 
-    let date = new Date();
+    const date = new Date();
 
-    let d = date.getDate();
-    let m = date.getMonth();
-    let y = date.getFullYear();
+    const d = date.getDate();
+    const m = date.getMonth();
+    const y = date.getFullYear();
     let suffix = "th";
     if (d % 10 == 1 && d != 11) suffix = "st";
     if (d % 10 == 2 && d != 12) suffix = "nd";
     if (d % 10 == 3 && d != 13) suffix = "rd";
 
-    let shortDate = `${y}-${m + 1 < 10 ? "0" + (m + 1): m + 1}-${d < 10 ? "0" + d : d}`;
+    const shortDate = `${y}-${m + 1 < 10 ? "0" + (m + 1): m + 1}-${d < 10 ? "0" + d : d}`;
 
     week = 0;
     for (let weekStart of weekStarts) {
@@ -63,23 +60,23 @@ function render() {
 
     let dy, dm, dd;
 
-    let lastWeek = weekStarts[week-1];
+    const lastWeek = weekStarts[week-1];
     if (lastWeek !== undefined) {
       dy = Number(lastWeek.substring(0, 4));
       dm = Number(lastWeek.substring(5, 7)) - 1;
       dd = Number(lastWeek.substring(8, 10));
     }
-    let lastDate = new Date(dy, dm, dd);
-    let tPlus = Math.ceil((date - lastDate) / (1000 * 3600 * 24));
+    const lastDate = new Date(dy, dm, dd);
+    const tPlus = Math.ceil((date - lastDate) / (1000 * 3600 * 24));
 
-    let nextWeek = weekStarts[week];
+    const nextWeek = weekStarts[week];
     if (nextWeek !== undefined) {
       dy = Number(nextWeek.substring(0, 4));
       dm = Number(nextWeek.substring(5, 7)) - 1;
       dd = Number(nextWeek.substring(8, 10));
     }
-    let nextDate = new Date(dy, dm, dd);
-    let tMinus = Math.ceil((nextDate - date) / (1000 * 3600 * 24));
+    const nextDate = new Date(dy, dm, dd);
+    const tMinus = Math.ceil((nextDate - date) / (1000 * 3600 * 24));
 
     if (w > 512) {
 
