@@ -100,21 +100,21 @@ function render() {
     } else {
 
       if (week == 0) {
-        context.font = '24px "Roboto Slab,serif"';
+        context.font = '18px "Roboto Slab,serif"';
         context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
-        context.fillText(`(${startOfTermText})`, w-10, 24);
+        context.fillText(`(${startOfTermText})`, w-10, 18);
       } else if (shortDate > endOfYear) {
-        context.font = '32px "Roboto Slab,serif"';
-        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
-        context.fillText(`(Summer holiday)`, w-10, 32);
-      } else if (date.getDay() == 0 || date.getDay() == 6 || tPlus > 5) {
         context.font = '24px "Roboto Slab,serif"';
         context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
-        context.fillText(`(Week ${week + 1} starts ${tMinus == 1 ? "tomorrow" : "in " + tMinus + " days"})`, w-10, 24);
-      } else {
-        context.font = '32px "Roboto Slab,serif"';
+        context.fillText(`(Summer holiday)`, w-10, 24);
+      } else if (date.getDay() == 0 || date.getDay() == 6 || tPlus > 5) {
+        context.font = '18px "Roboto Slab,serif"';
         context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
-        context.fillText(`(Week ${week})`, w-10, 32);
+        context.fillText(`(Week ${week + 1} starts ${tMinus == 1 ? "tomorrow" : "in " + tMinus + " days"})`, w-10, 18);
+      } else {
+        context.font = '24px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
+        context.fillText(`(Week ${week})`, w-10, 24);
       }
 
     }
