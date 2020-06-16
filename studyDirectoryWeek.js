@@ -34,6 +34,8 @@ function render() {
     canvas.width = w;
     canvas.height = h;
 
+    console.log(h);
+
     const context = canvas.getContext('2d');
 
     context.fillStyle = '#e8e7e9';
@@ -72,11 +74,6 @@ function render() {
     let lastDate = new Date(dy, dm, dd);
     let tPlus = Math.ceil((date - lastDate) / (1000 * 3600 * 24));
 
-    console.log(lastDate);
-    console.log(tPlus);
-
-    console.log("-----");
-
     let nextWeek = weekStarts[week];
     if (nextWeek !== undefined) {
       dy = Number(nextWeek.substring(0, 4));
@@ -85,9 +82,6 @@ function render() {
     }
     let nextDate = new Date(dy, dm, dd);
     let tMinus = Math.ceil((nextDate - date) / (1000 * 3600 * 24));
-
-    console.log(nextDate);
-    console.log(tMinus);
 
     if (week == 0) {
       context.font = '24px "Roboto Slab,serif"';
