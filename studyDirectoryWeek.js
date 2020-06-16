@@ -25,7 +25,7 @@ function render() {
     context.fillRect(0,0,w,h);
 
     context.fillStyle = '#55366b';
-    context.font = '50px "Roboto Slab"';
+    context.font = '24px "Roboto Slab"';
     context.fillText("It is week 34", 20, 80);
 
 }
