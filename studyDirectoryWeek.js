@@ -34,8 +34,6 @@ function render() {
     canvas.width = w;
     canvas.height = h;
 
-    console.log(w);
-
     const context = canvas.getContext('2d');
 
     context.fillStyle = '#e8e7e9';
@@ -83,18 +81,42 @@ function render() {
     let nextDate = new Date(dy, dm, dd);
     let tMinus = Math.ceil((nextDate - date) / (1000 * 3600 * 24));
 
-    if (week == 0) {
-      context.font = '24px "Roboto Slab,serif"';
-      context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (${startOfTermText})`, w-10, 0);
-    } else if (shortDate > endOfYear) {
-      context.font = '32px "Roboto Slab,serif"';
-      context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Summer holiday)`, w-10, 0);
-    } else if (date.getDay() == 0 || date.getDay() == 6 || tPlus > 5) {
-      context.font = '24px "Roboto Slab,serif"';
-      context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Week ${week + 1} starts ${tMinus == 1 ? "tomorrow" : "in " + tMinus + " days"})`, w-10, 0);
+    if (w > 512) {
+
+      if (week == 0) {
+        context.font = '24px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (${startOfTermText})`, w-10, 0);
+      } else if (shortDate > endOfYear) {
+        context.font = '32px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Summer holiday)`, w-10, 0);
+      } else if (date.getDay() == 0 || date.getDay() == 6 || tPlus > 5) {
+        context.font = '24px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Week ${week + 1} starts ${tMinus == 1 ? "tomorrow" : "in " + tMinus + " days"})`, w-10, 0);
+      } else {
+        context.font = '32px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Week ${week})`, w-10, 0);
+      }
+
     } else {
-      context.font = '32px "Roboto Slab,serif"';
-      context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]} (Week ${week})`, w-10, 0);
+
+      if (week == 0) {
+        context.font = '24px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
+        context.fillText(`(${startOfTermText})`, w-10, 24);
+      } else if (shortDate > endOfYear) {
+        context.font = '32px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
+        context.fillText(`(Summer holiday)`, w-10, 32);
+      } else if (date.getDay() == 0 || date.getDay() == 6 || tPlus > 5) {
+        context.font = '24px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
+        context.fillText(`(Week ${week + 1} starts ${tMinus == 1 ? "tomorrow" : "in " + tMinus + " days"})`, w-10, 24);
+      } else {
+        context.font = '32px "Roboto Slab,serif"';
+        context.fillText(`${days[date.getDay()]} ${d}${suffix} ${months[m]}`, w-10, 0);
+        context.fillText(`(Week ${week})`, w-10, 32);
+      }
+
     }
 
 }
