@@ -34,7 +34,7 @@ function render() {
     canvas.width = w;
     canvas.height = h;
 
-    console.log(h);
+    console.log(w);
 
     const context = canvas.getContext('2d');
 
